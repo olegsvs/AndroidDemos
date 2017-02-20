@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ThirdPartyDemo</string>
+    <string name="test_resource">I am in the base apk</string>l
+</resources>
