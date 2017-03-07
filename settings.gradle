@@ -1,2 +1,2 @@
-include ':app:tinker', ':app:demo', ':app:navigationview', ':app:provider'
+include ':app:tinker', ':app:demo', ':app:navigationview', ':app:provider', ':app:aidldemo'
 include ':lib'

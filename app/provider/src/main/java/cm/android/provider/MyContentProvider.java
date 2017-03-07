@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import java.sql.SQLException;
 
@@ -130,5 +132,11 @@ public class MyContentProvider extends ContentProvider {
 		}
 		
 		
+	}
+
+	@Nullable
+	@Override
+	public Bundle call(String method, String arg, Bundle extras) {
+		return super.call(method, arg, extras);
 	}
 }
