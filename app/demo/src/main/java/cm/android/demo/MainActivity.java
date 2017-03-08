@@ -19,19 +19,21 @@ public class MainActivity extends AppCompatActivity {
         start = (Button) findViewById(R.id.start);
         stop = (Button) findViewById(R.id.stop);
 
-        String s="methond";
-        if(s.contains("sme")){
+        Log.e("ggg", "onCreate: ");
+
+        String s = "methond";
+        if (s.contains("sme")) {
             Log.e("ggg", "me: ");
-        }else if(s.contains("methond")){
+        } else if (s.contains("methond")) {
             Log.e("ggg", "method: ");
-        } else if(s.contains("hon")){
+        } else if (s.contains("hon")) {
             Log.e("ggg", "hod: ");
-        }else {
+        } else {
             Log.e("ggg", "fffff: ");
         }
 
         Intent intent1 = new Intent();
-       intent1.setPackage(this.getPackageName());
+        intent1.setPackage(this.getPackageName());
         MainActivity.this.sendBroadcast(intent1);
 
         start.setOnClickListener(new View.OnClickListener() {
