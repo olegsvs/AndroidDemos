@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         start = (Button) findViewById(R.id.start);
         stop = (Button) findViewById(R.id.stop);
 
-        Log.e("ggg", "onCreate: ");
 
         String s = "methond";
         if (s.contains("sme")) {
