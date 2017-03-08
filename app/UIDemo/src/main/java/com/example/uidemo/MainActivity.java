@@ -1,5 +1,6 @@
 package com.example.uidemo;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         swipeRefreshLayout.setColorSchemeColors(Color.GREEN, Color.RED, Color.BLUE, Color.YELLOW);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mdDatas);
         listView.setAdapter(adapter);
+
+        Intent intent= new Intent(this, ViewPagerActivity.class);
+        startActivity(intent);
     }
 
 
