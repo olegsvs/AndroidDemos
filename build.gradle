@@ -25,8 +25,8 @@ task clean(type: Delete) {
 
 ext{
     baseDependencies=[
-            rxandroid                  : "io.reactivex:rxandroid:1.1.0",
-            rxjava                     : "io.reactivex:rxjava:1.1.0",
-            rxbinding                  : "com.jakewharton.rxbinding:rxbinding:0.4.0",
+            rxandroid                  : "io.reactivex.rxjava2:rxandroid:2.0.1",
+            rxjava                     : "io.reactivex.rxjava2:rxjava:2.0.7",
+            rxbinding                  : "com.jakewharton.rxbinding2:rxbinding:2.0.0",
     ]
 }

@@ -26,4 +26,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.2.0'
 
     def baseDependencies = rootProject.ext.baseDependencies
+    compile baseDependencies.rxandroid
+    compile baseDependencies.rxjava
+    compile baseDependencies.rxbinding
+
 }
