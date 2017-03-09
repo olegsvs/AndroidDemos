@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import java.lang.ref.WeakReference;
@@ -14,7 +15,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class TimerActivity extends AppCompatActivity {
+public class TimerActivity extends AppCompatActivity implements View.OnClickListener {
+
 
     private static class LooperHandler extends Handler {
         private static final String TAG = "ggg";
@@ -43,8 +45,9 @@ public class TimerActivity extends AppCompatActivity {
     }
 
     private LooperHandler mHandler = new LooperHandler(TimerActivity.this);
-    private Button start;
-    private Button stop;
+    private Button handlerTask;
+    private Button timerTask;
+    private Button scheduleExecutorService;
 
     private Timer timer;
 
@@ -54,24 +57,43 @@ public class TimerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        start = (Button) findViewById(R.id.start);
-        stop = (Button) findViewById(R.id.stop);
 
-        handlerPostDelayed();
-        timerTask();
-        scheduleExecutorService();
+        handlerTask = (Button) findViewById(R.id.HandlerTask);
+        timerTask = (Button) findViewById(R.id.TimerTask);
+        scheduleExecutorService = (Button) findViewById(R.id.scheduleExecutorService);
+
+        handlerTask.setOnClickListener(this);
+        timerTask.setOnClickListener(this);
+        scheduleExecutorService.setOnClickListener(this);
     }
 
-    private Runnable mRunnable = new Runnable() {
-        @Override
-        public void run() {
-            Message msg = mHandler.obtainMessage(0);
-            mHandler.sendMessage(msg);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.HandlerTask:
+                handlerTask();
+                break;
+            case R.id.TimerTask:
+                timerTask();
+                break;
+            case R.id.scheduleExecutorService:
+                scheduleExecutorService();
+                break;
+            default:
+                break;
         }
-    };
+    }
 
-    private void handlerPostDelayed() {
-        mHandler.postDelayed(mRunnable, 0);
+    private void handlerTask() {
+        Runnable mRunnable = new Runnable() {
+            @Override
+            public void run() {
+                Message msg = mHandler.obtainMessage(0);
+                mHandler.sendMessage(msg);
+            }
+        };
+
+        mHandler.postDelayed(mRunnable, 2000);
     }
 
 

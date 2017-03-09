@@ -4,6 +4,7 @@ import com.nineoldandroids.view.ViewHelper;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -42,6 +43,7 @@ public class MyViewPager extends ViewPager {
         super.onPageScrolled(position, offset, offsetPixels);
 
     }
+
 
     private boolean isSmall(float positionOffset) {
         return Math.abs(positionOffset) < 0.0001;
