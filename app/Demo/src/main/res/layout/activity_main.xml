@@ -19,7 +19,8 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            app:layout_constraintHorizontal_bias="0.175" />
 
     <Button
             android:id="@+id/TimerTask"
@@ -27,13 +28,10 @@
             android:layout_height="wrap_content"
             android:text="TimerTask"
             android:layout_below="@+id/HandlerTask"
-            android:layout_marginTop="61dp"
+            android:layout_marginTop="105dp"
             app:layout_constraintTop_toBottomOf="@+id/HandlerTask"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="237dp"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
             android:textAllCaps="false" />
 
     <Button
@@ -45,12 +43,57 @@
             android:layout_marginLeft="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             android:textAllCaps="false"
-            android:layout_marginTop="66dp"
-            app:layout_constraintTop_toBottomOf="@+id/TimerTask"
+            android:layout_marginTop="8dp"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp"
-            app:layout_constraintVertical_bias="0.0"
-            android:id="@+id/scheduleExecutorService" />
+            app:layout_constraintVertical_bias="0.657"
+            android:id="@+id/scheduleExecutorService"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+            android:text="HandlerTaskCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteY="55dp"
+            android:id="@+id/HandlerTaskCancel"
+            app:layout_constraintLeft_toRightOf="@+id/HandlerTask"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textAllCaps="false" />
+
+    <Button
+            android:text="TimerTaskCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TimerTaskCancel"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:textAllCaps="false"
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/TimerTask"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/HandlerTaskCancel"
+            app:layout_constraintVertical_bias="0.281" />
+
+    <Button
+            android:text="scheduleExecutorServiceCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scheduleExecutorServiceCancel"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/scheduleExecutorService"
+            android:textAllCaps="false"
+            app:layout_constraintVertical_bias="0.319" />
 </android.support.constraint.ConstraintLayout>
 

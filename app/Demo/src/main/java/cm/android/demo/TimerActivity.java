@@ -46,8 +46,11 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
 
     private LooperHandler mHandler = new LooperHandler(TimerActivity.this);
     private Button handlerTask;
+    private Button handlerTaskCancel;
     private Button timerTask;
+    private Button timerTaskCancel;
     private Button scheduleExecutorService;
+    private Button scheduleExecutorServiceCancel;
 
     private Timer timer;
 
@@ -62,29 +65,46 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
         timerTask = (Button) findViewById(R.id.TimerTask);
         scheduleExecutorService = (Button) findViewById(R.id.scheduleExecutorService);
 
+        handlerTaskCancel = (Button) findViewById(R.id.HandlerTaskCancel);
+        timerTaskCancel = (Button) findViewById(R.id.TimerTaskCancel);
+        scheduleExecutorServiceCancel = (Button) findViewById(R.id.scheduleExecutorServiceCancel);
+
         handlerTask.setOnClickListener(this);
         timerTask.setOnClickListener(this);
         scheduleExecutorService.setOnClickListener(this);
+
+        handlerTaskCancel.setOnClickListener(this);
+        timerTaskCancel.setOnClickListener(this);
+        scheduleExecutorServiceCancel.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.HandlerTask:
-                handlerTask();
+                handlerTask(true);
+                break;
+            case R.id.HandlerTaskCancel:
+                handlerTask(false);
                 break;
             case R.id.TimerTask:
-                timerTask();
+                timerTask(true);
+                break;
+            case R.id.TimerTaskCancel:
+                timerTask(false);
                 break;
             case R.id.scheduleExecutorService:
-                scheduleExecutorService();
+                scheduleExecutorService(true);
+                break;
+            case R.id.scheduleExecutorServiceCancel:
+                scheduleExecutorService(false);
                 break;
             default:
                 break;
         }
     }
 
-    private void handlerTask() {
+    private void handlerTask(Boolean bool) {
         Runnable mRunnable = new Runnable() {
             @Override
             public void run() {
@@ -93,30 +113,45 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
             }
         };
 
-        mHandler.postDelayed(mRunnable, 2000);
+        if (bool) {
+            mHandler.postDelayed(mRunnable, 2000);
+        } else {
+            mHandler.removeMessages(0);
+        }
     }
 
 
-    private void timerTask() {
+    private void timerTask(final boolean bool) {
         timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                Message msg = mHandler.obtainMessage(2);
-                mHandler.sendMessage(msg);
+                if (bool) {
+                    Message msg = mHandler.obtainMessage(1);
+                    mHandler.sendMessage(msg);
+                } else {
+                    timer.cancel();
+                }
+
             }
         };
         timer.schedule(task, 0, 2000);
     }
 
-    private void scheduleExecutorService() {
+    private void scheduleExecutorService(boolean bool) {
         scheduled = new ScheduledThreadPoolExecutor(1);
-        scheduled.scheduleAtFixedRate(new Runnable() {
-            @Override
-            public void run() {
-                Message msg = mHandler.obtainMessage(1);
-                mHandler.sendMessage(msg);
-            }
-        }, 0, 3000, TimeUnit.MILLISECONDS);
+
+
+        if (bool) {
+            scheduled.scheduleAtFixedRate(new Runnable() {
+                @Override
+                public void run() {
+                    Message msg = mHandler.obtainMessage(2);
+                    mHandler.sendMessage(msg);
+                }
+            }, 0, 3000, TimeUnit.MILLISECONDS);
+        } else {
+            scheduled.shutdownNow();
+        }
     }
 }
