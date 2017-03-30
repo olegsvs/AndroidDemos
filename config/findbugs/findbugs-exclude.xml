@@ -53,4 +53,8 @@
 	<Match>
 		<Class name="~.*\.*Test"/>
 	</Match>
+
+	<Match>
+		<Package name="~com\.example\.qualityanalysis.*"/>
+	</Match>
 </FindBugsFilter>

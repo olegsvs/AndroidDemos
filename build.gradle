@@ -3,16 +3,34 @@
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url CM_RELEASE_REPOSITORY_URL
+            credentials {
+                username CM_NEXUS_USERNAME
+                password CM_NEXUS_PASSWORD
+            }
+        }
+
+        maven { url uri(new File(rootDir, 'local_repo')) }
+        mavenLocal()
+
     }
+
+    ext {
+        cmGradleVersion = "local.local"
+    }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
-        classpath ('com.tencent.tinker:tinker-patch-gradle-plugin:1.7.7')
+        classpath "ggg.android:gradle-plugin:$cmGradleVersion"
+        classpath('com.tencent.tinker:tinker-patch-gradle-plugin:1.7.7')
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
-allprojects {
+allprojects { prj ->
+    println('JJJ:'+prj.name)
     repositories {
         jcenter()
     }
@@ -23,24 +41,42 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-ext{
-    baseDependencies=[
-            rxandroid                  : "io.reactivex.rxjava2:rxandroid:2.0.1",
-            rxjava                     : "io.reactivex.rxjava2:rxjava:2.0.1",
-            rxbinding                  : "com.jakewharton.rxbinding2:rxbinding:2.0.0",
+ext {
+    baseDependencies = [
+            rxandroid: "io.reactivex.rxjava2:rxandroid:2.0.1",
+            rxjava   : "io.reactivex.rxjava2:rxjava:2.0.1",
+            rxbinding: "com.jakewharton.rxbinding2:rxbinding:2.0.0",
+    ]
+
+    excludeProjects = [
+            'QualityAnalysis'
     ]
 
     //findBug config
     findbugsDependsOn = 'assembleDebug'
     findbugsExclude = [
-            'com/example/qualityanalysis**'
+            '**com/example/qualityanalysis**'
     ]
 
     //checkstyle config
     checkstyleExclude = [
     ]
 
+    // jacoco config
+    jacocoDependsOn = 'testDebugUnitTest'
+    jacocoVersion = '0.7.7.201606060606'
+    ignoredByJacoco = []
+
+    moduleClassDirs = [
+    ]
+    moduleJacocoExec = [
+
+    ]
+    moduleExcludes = []
+
 
 }
 
+
+apply plugin: 'cm.android.gradle.script'
 
