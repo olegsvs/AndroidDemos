@@ -1,4 +1,5 @@
 include ':app:Tinker'
+include ':app:QualityAnalysis'
 include ':app:UIDemo'
 include ':app:Demo'
 include ':app:NavigationView'
