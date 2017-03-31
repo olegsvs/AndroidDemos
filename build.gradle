@@ -17,11 +17,11 @@ buildscript {
     }
 
     ext {
-        cmGradleVersion = "local.local"
+        cmGradleVersion = "1.59"
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:2.3.0'
         classpath "ggg.android:gradle-plugin:$cmGradleVersion"
         classpath('com.tencent.tinker:tinker-patch-gradle-plugin:1.7.7')
         // NOTE: Do not place your application dependencies here; they belong
@@ -30,7 +30,6 @@ buildscript {
 }
 
 allprojects { prj ->
-    println('JJJ:'+prj.name)
     repositories {
         jcenter()
     }
@@ -48,15 +47,12 @@ ext {
             rxbinding: "com.jakewharton.rxbinding2:rxbinding:2.0.0",
     ]
 
-    excludeProjects = [
+    findbugsExcludeProjects = [
             'QualityAnalysis'
     ]
 
     //findBug config
     findbugsDependsOn = 'assembleDebug'
-    findbugsExclude = [
-            '**com/example/qualityanalysis**'
-    ]
 
     //checkstyle config
     checkstyleExclude = [
@@ -76,7 +72,6 @@ ext {
 
 
 }
-
 
 apply plugin: 'cm.android.gradle.script'
 
