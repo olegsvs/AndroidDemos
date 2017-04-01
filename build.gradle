@@ -4,11 +4,7 @@ buildscript {
     repositories {
         jcenter()
         maven {
-            url CM_RELEASE_REPOSITORY_URL
-            credentials {
-                username CM_NEXUS_USERNAME
-                password CM_NEXUS_PASSWORD
-            }
+            url RELEASE_REPOSITORY_URL
         }
 
         maven { url uri(new File(rootDir, 'local_repo')) }
@@ -54,7 +50,7 @@ ext {
     //findBug config
     findbugsDependsOn = 'assembleDebug'
 
-    findbugsExclude=[]
+    findbugsExclude = []
     //checkstyle config
     checkstyleExclude = [
     ]
