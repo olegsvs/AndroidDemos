@@ -17,7 +17,7 @@ buildscript {
     }
 
     ext {
-        cmGradleVersion = "1.59"
+        cmGradleVersion = "1.60"
     }
 
     dependencies {
@@ -54,6 +54,7 @@ ext {
     //findBug config
     findbugsDependsOn = 'assembleDebug'
 
+    findbugsExclude=[]
     //checkstyle config
     checkstyleExclude = [
     ]
