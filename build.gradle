@@ -4,11 +4,7 @@ buildscript {
     repositories {
         jcenter()
         maven {
-            url CM_RELEASE_REPOSITORY_URL
-            credentials {
-                username CM_NEXUS_USERNAME
-                password CM_NEXUS_PASSWORD
-            }
+            url RELEASE_REPOSITORY_URL
         }
 
         maven { url uri(new File(rootDir, 'local_repo')) }
@@ -17,7 +13,7 @@ buildscript {
     }
 
     ext {
-        cmGradleVersion = "1.59"
+        cmGradleVersion = "1.60"
     }
 
     dependencies {
@@ -54,6 +50,7 @@ ext {
     //findBug config
     findbugsDependsOn = 'assembleDebug'
 
+    findbugsExclude = []
     //checkstyle config
     checkstyleExclude = [
     ]
