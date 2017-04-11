@@ -1,4 +1,5 @@
-include ':app:Tinker', ':app:Admin'
+include ':app:Tinker'
+include ':app:Admin'
 include ':app:QualityAnalysis'
 include ':app:UIDemo'
 include ':app:Demo'
